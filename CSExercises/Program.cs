@@ -5,41 +5,40 @@ using System;
 
 namespace Demoabstraction
 {
-    abstract class Car
+    abstract class Database
     {
-        public void Run()
+        public virtual void connect()
         {
-            Console.WriteLine("display");
+            Console.WriteLine("Connect");
         }
+        public abstract void configure();
 
-
-        //** A method cannot have a body which is marked as abstract. Below is the correct declaration. The class derived from it will implement the engine method which is abstract.
-        //public abstract void engine()
-        //{
-        //    Console.WriteLine("1000 cc");
-        //}
-
-
-        public abstract void engine();
     }
 
-    //** Honda class, engine method needs to have override keyword at it's in base class abstract
-
-    class Honda : Car
+    class SQLServer : Database
     {
-        public override void engine()
+
+        //** Missing override 
+        public override void connect()
         {
-            Console.WriteLine("1000 cc");
+            Console.WriteLine("Connect SQL Server");
         }
+
+        public override void configure()
+        {
+            Console.WriteLine("Configure database");
+        }
+
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Car c = new Honda();
-            c.engine();
-            c.Run();
+            Database db = new SQLServer();
+            db.configure();
+            db.connect();
+
         }
     }
 }
