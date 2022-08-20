@@ -5,12 +5,31 @@ using System;
 
 namespace Demoabstraction
 {
-    abstract class Customer
+    abstract class Car
     {
-        public void Print()
+        public void Run()
         {
-            Console.WriteLine("Print Method");
+            Console.WriteLine("display");
+        }
 
+
+        //** A method cannot have a body which is marked as abstract. Below is the correct declaration. The class derived from it will implement the engine method which is abstract.
+        //public abstract void engine()
+        //{
+        //    Console.WriteLine("1000 cc");
+        //}
+
+
+        public abstract void engine();
+    }
+
+    //** Honda class, engine method needs to have override keyword at it's in base class abstract
+
+    class Honda : Car
+    {
+        public override void engine()
+        {
+            Console.WriteLine("1000 cc");
         }
     }
 
@@ -18,9 +37,9 @@ namespace Demoabstraction
     {
         static void Main(string[] args)
         {
-            Customer c = new Customer(); // ** We can't create an instance of the abstract class!
-            c.Print();
-
+            Car c = new Honda();
+            c.engine();
+            c.Run();
         }
     }
 }
