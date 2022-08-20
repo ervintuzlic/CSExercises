@@ -5,54 +5,21 @@ using System;
 
 namespace Demoabstraction
 {
-
-    // abstract class
-    abstract class Shape
+    abstract class Customer
     {
-
-        // abstract method
-        public abstract int area();
-    }
-
-    // square class inheriting
-    // the Shape class
-    class Square : Shape
-    {
-
-        // private data member
-        private int side;
-
-        // method of  square class
-        public Square(int x = 0)
+        public void Print()
         {
-            side = x;
-        }
+            Console.WriteLine("Print Method");
 
-        // overriding of the abstract method of Shape
-        // class using the override keyword
-        public override int area()
-        {
-            Console.Write("Area of Square: ");
-            return (side * side);
         }
     }
 
-    // Driver Class
-    class GFG
+    class Program
     {
-
-        // Main Method
         static void Main(string[] args)
         {
-
-            // creating reference of Shape class
-            // which refer to Square class instance
-            Shape sh = new Square(4);
-
-            // calling the method
-            double result = sh.area();
-
-            Console.Write("{0}", result);
+            Customer c = new Customer(); // ** We can't create an instance of the abstract class!
+            c.Print();
 
         }
     }
