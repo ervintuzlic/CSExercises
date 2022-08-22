@@ -6,36 +6,39 @@ using System;
 namespace Demoabstraction
 {
 
-    //  Program To Find the No of Word in a String
-    public class Solution
-    {
-        public static void Main()
-        {
-            Console.WriteLine("Input a string");
-            string inputString = Console.ReadLine();
+	//   Find Sum of Digits of a Number
+	public class Solution
+	{
+		public static void Main()
+		{
+			int inputNumber = 9845;
 
-            Console.WriteLine("Word Counts With Split Function : " + WordCount(inputString));
-            Console.WriteLine("Word Counts Without Split Function : " + WordCountWithoutSplitFunction(inputString));
+			Console.WriteLine("Input Number : " + inputNumber);
+			Console.WriteLine("Sum of Digits : " + SumOfDigits(inputNumber));
+			Console.WriteLine("Sum of Digits using Recursion: " + DigitSumRecursion(inputNumber));
+		}
 
-        }
+		public static int SumOfDigits(int inputNumber)
+		{
+			int sum = 0;
+			while (inputNumber > 0)
+			{
+				sum += inputNumber % 10;
+				inputNumber /= 10;
+			}
+			return sum;
+		}
 
-        public static int WordCount(string inputString)
-        {
-            string[] words = inputString.Split(' ');
-            return words.Length;
-        }
-
-        public static int WordCountWithoutSplitFunction(string inputString)
-        {
-            int wordCount = 1;
-            char[] charArray = inputString.Trim().ToCharArray();
-
-            foreach (char item in charArray)
-            {
-                if (item == ' ')
-                    wordCount = wordCount + 1;
-            }
-            return wordCount;
-        }
-    }
+		public static int DigitSumRecursion(int inputNumber)
+		{
+			if (inputNumber != 0)
+			{
+				return (inputNumber % 10 + DigitSumRecursion(inputNumber / 10));
+			}
+			else
+			{
+				return 0;
+			}
+		}
+	}
 }
