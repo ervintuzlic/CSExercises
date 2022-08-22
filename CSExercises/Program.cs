@@ -5,40 +5,34 @@ using System;
 
 namespace Demoabstraction
 {
-    abstract class Database
-    {
-        public virtual void connect()
-        {
-            Console.WriteLine("Connect");
-        }
-        public abstract void configure();
 
-    }
-
-    class SQLServer : Database
+    // How to find if the given string is a palindrome or not?
+    public class Solution
     {
 
-        //** Missing override 
-        public override void connect()
+        public static bool IsPalindrome(string p)
         {
-            Console.WriteLine("Connect SQL Server");
+            string newString = null;
+
+            for(int i = p.Length-1; i >= 0; i--)
+            {
+                newString += p[i];
+            }
+
+            if (newString == p)
+                return true;
+            else 
+                return false;
         }
 
-        public override void configure()
+        static void Main()
         {
-            Console.WriteLine("Configure database");
-        }
-
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Database db = new SQLServer();
-            db.configure();
-            db.connect();
-
+            Console.WriteLine("Input a string: ");
+            string palindrom = Console.ReadLine();
+            if (IsPalindrome(palindrom))
+                Console.WriteLine("It is palindrom");
+            else
+                Console.WriteLine("It isn't palindrom");
         }
     }
 }
