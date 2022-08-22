@@ -6,33 +6,29 @@ using System;
 namespace Demoabstraction
 {
 
-    // How to find if the given string is a palindrome or not?
+    // How to reverse the order of words in a given string?
     public class Solution
     {
 
-        public static bool IsPalindrome(string p)
+        public static string ReverseWord(string p)
         {
-            string newString = null;
+            string newWord = null;
 
-            for(int i = p.Length-1; i >= 0; i--)
+            for(int i = p.Length - 1; i >= 0; i--)
             {
-                newString += p[i];
+                newWord += p[i];
             }
 
-            if (newString == p)
-                return true;
-            else 
-                return false;
+            return newWord;
         }
 
         static void Main()
         {
             Console.WriteLine("Input a string: ");
-            string palindrom = Console.ReadLine();
-            if (IsPalindrome(palindrom))
-                Console.WriteLine("It is palindrom");
-            else
-                Console.WriteLine("It isn't palindrom");
+            string Word = Console.ReadLine();
+            string newWord = ReverseWord(Word);
+            Console.WriteLine("This is the reversed word: " + newWord);
+
         }
     }
 }
