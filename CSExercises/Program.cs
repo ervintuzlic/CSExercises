@@ -13,7 +13,7 @@ namespace Demoabstraction
 		{
 			int inputNumber = 9845;
 
-			Console.WriteLine("Input Number : " + inputNumber);
+			Console.WriteLine("Input Numb : " + inputNumber);
 			Console.WriteLine("Sum of Digits : " + SumOfDigits(inputNumber));
 			Console.WriteLine("Sum of Digits using Recursion: " + DigitSumRecursion(inputNumber));
 		}
