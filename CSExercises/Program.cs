@@ -6,40 +6,33 @@ using System;
 namespace Demoabstraction
 {
 
-    // How to count the occurrence of each character in a string?
+    // How to find if a positive integer is a prime number or not?
     public class Solution
     {
-
-        public static void CharacterOccurrence(string p)
+        public static bool IsPrime(int number)
         {
-            Dictionary<char, int> CharacterCounter = new Dictionary<char, int>();
+            if (number == 0) return false;
+            if (number == 1) return false;
+            if (number % 2 == 0) return false;
 
-            foreach (var character in p)
-            {
-                if (character != ' ')
-                {
-                    if (!CharacterCounter.ContainsKey(character))
-                    {
-                        CharacterCounter.Add(character, 1);
-                    }
-                    else
-                    {
-                        CharacterCounter[character]++;
-                    }
-                }
-            }
+            var squareRoot = (int)Math.Floor(Math.Sqrt(number));
 
-            foreach (var character in CharacterCounter)
+            for(int i = 3; i < squareRoot; i+=2)
             {
-                Console.WriteLine("{0} - {1}", character.Key, character.Value);
+                if (number % i == 0)
+                    return false;
             }
+            return true;
         }
 
         static void Main()
         {
-            Console.WriteLine("Enter string: ");
-            string newString = Console.ReadLine();
-            CharacterOccurrence(newString);
+            Console.WriteLine("Enter a number: ");
+            string newNumber = Console.ReadLine();
+            if (IsPrime(Convert.ToInt32(newNumber)))
+                Console.WriteLine("True");
+            else
+                Console.WriteLine("False");
         }
     }
 }
