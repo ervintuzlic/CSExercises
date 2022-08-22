@@ -6,29 +6,40 @@ using System;
 namespace Demoabstraction
 {
 
-    // How to reverse the order of words in a given string?
+    // How to count the occurrence of each character in a string?
     public class Solution
     {
 
-        public static string ReverseWord(string p)
+        public static void CharacterOccurrence(string p)
         {
-            string newWord = null;
+            Dictionary<char, int> CharacterCounter = new Dictionary<char, int>();
 
-            for(int i = p.Length - 1; i >= 0; i--)
+            foreach (var character in p)
             {
-                newWord += p[i];
+                if (character != ' ')
+                {
+                    if (!CharacterCounter.ContainsKey(character))
+                    {
+                        CharacterCounter.Add(character, 1);
+                    }
+                    else
+                    {
+                        CharacterCounter[character]++;
+                    }
+                }
             }
 
-            return newWord;
+            foreach (var character in CharacterCounter)
+            {
+                Console.WriteLine("{0} - {1}", character.Key, character.Value);
+            }
         }
 
         static void Main()
         {
-            Console.WriteLine("Input a string: ");
-            string Word = Console.ReadLine();
-            string newWord = ReverseWord(Word);
-            Console.WriteLine("This is the reversed word: " + newWord);
-
+            Console.WriteLine("Enter string: ");
+            string newString = Console.ReadLine();
+            CharacterOccurrence(newString);
         }
     }
 }
