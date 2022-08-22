@@ -6,33 +6,36 @@ using System;
 namespace Demoabstraction
 {
 
-    // How to find if a positive integer is a prime number or not?
+    //  Program To Find the No of Word in a String
     public class Solution
     {
-        public static bool IsPrime(int number)
+        public static void Main()
         {
-            if (number == 0) return false;
-            if (number == 1) return false;
-            if (number % 2 == 0) return false;
+            Console.WriteLine("Input a string");
+            string inputString = Console.ReadLine();
 
-            var squareRoot = (int)Math.Floor(Math.Sqrt(number));
+            Console.WriteLine("Word Counts With Split Function : " + WordCount(inputString));
+            Console.WriteLine("Word Counts Without Split Function : " + WordCountWithoutSplitFunction(inputString));
 
-            for(int i = 3; i < squareRoot; i+=2)
-            {
-                if (number % i == 0)
-                    return false;
-            }
-            return true;
         }
 
-        static void Main()
+        public static int WordCount(string inputString)
         {
-            Console.WriteLine("Enter a number: ");
-            string newNumber = Console.ReadLine();
-            if (IsPrime(Convert.ToInt32(newNumber)))
-                Console.WriteLine("True");
-            else
-                Console.WriteLine("False");
+            string[] words = inputString.Split(' ');
+            return words.Length;
+        }
+
+        public static int WordCountWithoutSplitFunction(string inputString)
+        {
+            int wordCount = 1;
+            char[] charArray = inputString.Trim().ToCharArray();
+
+            foreach (char item in charArray)
+            {
+                if (item == ' ')
+                    wordCount = wordCount + 1;
+            }
+            return wordCount;
         }
     }
 }
